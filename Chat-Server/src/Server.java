@@ -20,15 +20,15 @@ public class Server {
     public static void main(String[] args) {
         int puertoServidor = 9001;
         int numeroMaximoConexiones = 50;
-        List<Cliente> listaClientes = new ArrayList();
+        List<ConexionCliente> listaClientes = new ArrayList();
         
         System.out.println("Iniciando servidor de chat");
         try {
             ServerSocket serverSocket = new ServerSocket(puertoServidor, numeroMaximoConexiones);
-            
+            System.out.println("Servidor escuchando peticiones...");
             while(true){
                 Socket clienteSocket = serverSocket.accept();
-                Cliente cliente = new Cliente(clienteSocket);
+                ConexionCliente cliente = new ConexionCliente(clienteSocket);
                 listaClientes.add(cliente);
                 cliente.start();
             }

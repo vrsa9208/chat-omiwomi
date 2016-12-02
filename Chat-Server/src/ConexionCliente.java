@@ -14,14 +14,14 @@ import java.net.Socket;
  *
  * @author Administrador
  */
-public class Cliente extends Thread{
+public class ConexionCliente extends Thread{
     
     private Socket mSocket;
     private boolean mConectado;
     private DataInputStream mEntradaDatos;
     private DataOutputStream mSalidaDatos;
     
-    public Cliente(Socket socket){
+    public ConexionCliente(Socket socket){
         this.mSocket = socket;
         this.mConectado = true;
         try{
