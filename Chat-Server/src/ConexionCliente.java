@@ -49,21 +49,21 @@ public class ConexionCliente extends Thread{
     
     private void desconectar(){
         try{
-            this.mEntradaDatos.close();
+            if(this.mEntradaDatos != null) this.mEntradaDatos.close();
         } catch(IOException ex){
-            System.out.println("Error al cerrar el flujo de datos de entrada del cliente " + this.mSocket.getInetAddress().getHostName() + ": " + ex.getMessage());
+            System.out.println("Error al cerrar el flujo de datos de entrada del cliente: " + this.mSocket.getInetAddress().getHostName() + ": " + ex.getMessage());
         }
         
         try{
-            this.mSalidaDatos.close();
+            if(this.mSalidaDatos != null) this.mSalidaDatos.close();
         } catch(IOException ex){
-            System.out.println("Error al cerrar el flujo de datos de salida del cliente " + this.mSocket.getInetAddress().getHostName() + ": " + ex.getMessage());
+            System.out.println("Error al cerrar el flujo de datos de salida del cliente: " + this.mSocket.getInetAddress().getHostName() + ": " + ex.getMessage());
         }
         
         try{
-            this.mSocket.close();
+            if(this.mSocket != null) this.mSocket.close();
         } catch(IOException ex){
-            System.out.println("Error al cerrar el socket " + ex.getMessage());
+            System.out.println("Error al cerrar el socket: " + ex.getMessage());
         }
     }
 }
